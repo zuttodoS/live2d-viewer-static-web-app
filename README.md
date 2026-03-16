@@ -92,7 +92,7 @@ All fields can be mapped to any Live2D parameter in the **Parameter Mapping** pa
 
 ### Lip Sync with Vowel Detection
 
-> May requires serving over HTTP
+> May requires serving over HTTP (see [Webcam/Mic Features](#webcammic-features-require-http) below)
 
 1. In the Tracking panel, select your microphone
 2. Check **"Enable Lip Sync"**
@@ -121,7 +121,7 @@ All fields can be mapped to any Live2D parameter in the **Parameter Mapping** pa
 
 ### dTrack (Motion Detection)
 
-> May requires serving over HTTP
+> May requires serving over HTTP (see [Webcam/Mic Features](#webcammic-features-require-http) below)
 
 dTrack uses webcam optical flow to detect repetitive motion like hand waving and map it to a Live2D parameter:
 
@@ -158,7 +158,7 @@ In the Load Model panel:
 
 Settings include hotkey bindings, parameter mappings, emotion-expression mappings, background config, device selections, and vowel calibration data.
 
-## Webcam/Mic Features May Require HTTP
+## Webcam/Mic Features Require HTTP
 
 Features that access your camera or microphone may need the page served over HTTP due to browser security. For a quick local server:
 
