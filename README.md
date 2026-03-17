@@ -4,7 +4,7 @@ A single-file Live2D model viewer and VTuber tool. Just open `index.html` in you
 
 ## Quick Start
 
-1. Open `index.html` in **Chrome** or **Edge**
+1. Go to https://zuttodos.github.io/live2d-viewer-static-web-app/ or open `index.html` in **Chrome** or **Edge**
 2. Click the **folder icon** (top-left sidebar)
 3. Click **"Browse Folder..."** and select a folder containing your Live2D model
 4. Your model appears on screen — start exploring!
@@ -29,7 +29,9 @@ Your Live2D model folder should contain a `.model3.json` file along with its ass
 You can also use the **Transform** controls in the Load Model panel:
 - **Zoom slider** — adjusts scale (syncs with scroll wheel)
 - **Rotate slider** — adjusts rotation (syncs with right-drag)
-- **D-pad buttons** — click and hold to move in 8 directions; center button resets everything
+- **D-pad buttons** — click and hold to move in 8 directions; center button resets position
+
+The **fullscreen button** (⛶) at the bottom of the sidebar toggles fullscreen mode.
 
 ### Playing Animations
 
@@ -115,7 +117,7 @@ All fields can be mapped to any Live2D parameter in the **Parameter Mapping** pa
 3. **Mappings** section lets you connect tracking data to Live2D parameters
    - Left dropdown: tracking source (e.g., `mouthSmileLeft`, `jawOpen`, `emotionHappy`)
    - Right dropdown: Live2D parameter target
-   - Set output min/max ranges to calibrate the mapping
+   - Output min/max auto-populate from the selected parameter's range when you change the target
    - Click **"+ Add"** to add a new mapping
    - Click **"Reset Defaults"** to restore default mappings
 
@@ -148,7 +150,7 @@ dTrack uses webcam optical flow to detect repetitive motion like hand waving and
 
 1. Click the **keyboard icon** in the sidebar
 2. Click **"Set"** next to any action
-3. Press a key to bind it
+3. Press a key or key combination (e.g., Ctrl+1, Shift+A) to bind it
 
 ### Settings Export/Import
 
@@ -157,6 +159,10 @@ In the Load Model panel:
 - **Import Config** — loads settings from a previously exported JSON file
 
 Settings include hotkey bindings, parameter mappings, emotion-expression mappings, background config, device selections, and vowel calibration data.
+
+### Panel Resize
+
+Drag the right edge of any open panel to resize its width (200px–800px).
 
 ## Webcam/Mic Features Require HTTP
 
@@ -190,9 +196,9 @@ Then open `http://localhost:5002` instead of the file directly.
 
 ## Technical Details
 
-Everything is inlined into a single `index.html` file (~614KB):
+Everything is inlined into a single `index.html` file (~617KB):
 - Live2D Cubism SDK core runtime (~223KB)
-- Bundled application JavaScript (~389KB, includes CSS)
+- Bundled application JavaScript (~392KB, includes CSS)
 - Model files cached in IndexedDB for persistence across refreshes
 
 No external dependencies loaded from disk. MediaPipe WASM model is downloaded from CDN when face tracking is first enabled.
@@ -201,7 +207,7 @@ No external dependencies loaded from disk. MediaPipe WASM model is downloaded fr
 
 **Author:** Ram Tran
 **Email:** noobv2ram@gmail.com
-**Discord:** noobv2
+**Discord:** http://discord.com/users/noobv2
 
 ## License
 
