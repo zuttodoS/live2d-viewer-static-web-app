@@ -92,6 +92,42 @@ Default tracking is mirrored (like looking in a mirror) — turn left, model tur
 
 All fields can be mapped to any Live2D parameter in the **Parameter Mapping** panel.
 
+### Hand Tracking
+
+> Requires face tracking to be active (shares the same webcam feed)
+
+1. Click the **hand icon** (✋) in the sidebar to open the Hand Track panel
+2. Enable face tracking first (camera icon in sidebar)
+3. Check **"Enable Hand Tracking"**
+
+**Output modes:**
+- **Draw Hands** (default) — draws your hand skeleton overlaid on the model in real-time
+- **Map to Params** — exposes hand data as fields in the Parameter Mapping panel
+
+**Draw Hands options:**
+- **Mirror** — flips hands horizontally (default on)
+- **3D Rendering** — depth-aware rendering with tapered bones, joint spheres, highlights, and shadows
+- **Line Color / Thickness / Opacity** — customize the look
+- **Size Scale** — scale the hand drawing relative to the model
+- **D-pad + reset** — offset hand position on screen; hold button to keep moving
+
+**Mapped hand fields** (available in Parameter Mapping when "Map to Params" is selected):
+
+| Field | Description |
+|-------|-------------|
+| `handLeftX`, `handRightX` | Wrist X position (−1 = left, 1 = right) |
+| `handLeftY`, `handRightY` | Wrist Y position (−1 = top, 1 = bottom) |
+| `handLeftZ`, `handRightZ` | Wrist depth in meters ×5 (world space) |
+| `handLeftRotationX`, `handRightRotationX` | Pitch — forward/back tilt (degrees) |
+| `handLeftRotationY`, `handRightRotationY` | Yaw — left/right tilt (degrees) |
+| `handLeftRotationZ`, `handRightRotationZ` | Roll — wrist rotation (degrees; 0° = fingers up) |
+| `handLeftPalmFacing`, `handRightPalmFacing` | Palm facing camera: −1 = back of hand, 0 = side, 1 = palm |
+| `handLeftThumbCurl` … `handRightPinkyCurl` | Per-finger curl: 0 = straight, 1 = fully curled |
+| `handLeftGrab`, `handRightGrab` | Grab strength: average of 4 finger curls (0 = open, 1 = fist) |
+| `handLeftDistance`, `handRightDistance` | Distance from camera: 0 = far, 1 = close |
+
+You can bind a hotkey to **Toggle Hand Track** in the Hotkeys panel.
+
 ### Lip Sync with Vowel Detection
 
 > May requires serving over HTTP (see [Webcam/Mic Features](#webcammic-features-require-http) below)
@@ -186,6 +222,7 @@ Then open `http://localhost:5002` instead of the file directly.
 
 ### What may requires HTTP (when browsing from a strict device like Android phone)
 - Face Tracking (webcam)
+- Hand Tracking (webcam, requires face tracking active)
 - Lip Sync (microphone)
 - dTrack (webcam)
 
@@ -196,9 +233,9 @@ Then open `http://localhost:5002` instead of the file directly.
 
 ## Technical Details
 
-Everything is inlined into a single `index.html` file (~617KB):
+Everything is inlined into a single `index.html` file (~650KB):
 - Live2D Cubism SDK core runtime (~223KB)
-- Bundled application JavaScript (~392KB, includes CSS)
+- Bundled application JavaScript (~407KB, includes CSS)
 - Model files cached in IndexedDB for persistence across refreshes
 
 No external dependencies loaded from disk. MediaPipe WASM model is downloaded from CDN when face tracking is first enabled.
