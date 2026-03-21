@@ -175,6 +175,42 @@ dTrack uses webcam optical flow to detect repetitive motion like hand waving and
 3. Click **"Replace Texture"** to swap with a new image
 4. Click **"Reset"** to restore the original
 
+### Drawing
+
+1. Click the **pencil icon** (✏) in the sidebar
+2. Check **"Enable Drawing"** to activate the drawing canvas
+3. Select a tool: **Brush**, **Eraser**, **Line**, **Fill**, or **Text**
+
+**Brush/Eraser features:**
+- **7 presets** — Hard Round, Soft Round, Airbrush, Flat Brush, Pencil, Hard Eraser, Soft Eraser
+- **Preset customization** — modify any preset's settings, click "Save Preset" to persist; customized presets show `*`; right-click a preset to reset it
+- **Custom brush** — saves current settings as a new "Custom" preset in the list
+- Adjustable size, opacity, hardness, flow, spacing
+- **Brush tip** — ratio (aspect) and angle for flat/calligraphic brushes
+- **Stylus pen support** — pressure controls size and/or opacity; tilt controls brush angle
+- **Input Smoothing** slider — reduces pressure/tilt jitter for smoother strokes (0 = raw, 1 = very smooth, default 1)
+- **Undo/Redo** (Ctrl+Z / Ctrl+Shift+Z)
+
+**Other tools:**
+- **Line** — drag to draw straight lines with adjustable width and opacity
+- **Fill** — flood fill with configurable tolerance
+- **Text** — click to place text with font, size, bold, italic, underline options
+
+**Multi-layer support:**
+- Add, delete, reorder layers (like Krita/Photoshop)
+- Per-layer opacity slider and visibility toggle
+- Drawing always targets the selected (active) layer
+- **Clear Layer** clears only the active layer
+- **Save Image** exports only visible layers as PNG
+
+**Canvas controls:**
+- **Color picker** with hex input and eyedropper (samples from screen)
+- **Canvas Opacity** slider — fade the entire drawing canvas
+- **Clear Layer** / **Save Image** (exports visible layers as PNG)
+- **Reset Settings** — restores all drawing settings to defaults
+
+The drawing canvas sits **behind the Live2D model** but in front of the background.
+
 ### Background
 
 1. Click the **palette icon** in the sidebar
@@ -233,9 +269,9 @@ Then open `http://localhost:5002` instead of the file directly.
 
 ## Technical Details
 
-Everything is inlined into a single `index.html` file (~650KB):
+Everything is inlined into a single `index.html` file (~704KB):
 - Live2D Cubism SDK core runtime (~223KB)
-- Bundled application JavaScript (~407KB, includes CSS)
+- Bundled application JavaScript (~451KB, includes CSS)
 - Model files cached in IndexedDB for persistence across refreshes
 
 No external dependencies loaded from disk. MediaPipe WASM model is downloaded from CDN when face tracking is first enabled.
