@@ -15,7 +15,7 @@ Your loaded model is automatically cached in the browser, so it reloads when you
 
 ### Loading a Model
 
-Your Live2D model folder should contain a `.model3.json` file along with its associated assets (`.moc3`, textures, motions, expressions, etc.). Click "Browse Folder..." and select the entire model folder.
+Your Live2D model folder should contain a `.model3.json` file along with its associated assets (`.moc3`, textures, motions, expressions, etc.). Click "Browse Folder..." and select the entire model folder. Click **"Remove Model"** to unload the current model and free memory.
 
 ### Moving, Zooming & Rotating
 
@@ -74,7 +74,7 @@ Automatically switches the model's expression based on your detected facial emot
 1. Click the **camera icon** in the sidebar to open the Tracking panel
 2. Select your webcam from the dropdown
 3. Check **"Enable Tracking"**
-4. Click **"Calibrate"** while looking straight at the camera with a neutral expression, closed mouth and closed eyes
+4. Click **"Calibrate"** — make a (-_-) face (neutral position and expression, eyes closed, mouth closed) then press the button
 5. Your face movements now control the Live2D model in real-time
 
 Default tracking is mirrored (like looking in a mirror) — turn left, model turns left.
@@ -96,8 +96,8 @@ All fields can be mapped to any Live2D parameter in the **Parameter Mapping** pa
 
 > Requires face tracking to be active (shares the same webcam feed)
 
-1. Click the **hand icon** (✋) in the sidebar to open the Hand Track panel
-2. Enable face tracking first (camera icon in sidebar)
+1. Enable face tracking first (camera icon in sidebar, check **"Enable Tracking"**)
+2. Click the **hand icon** (✋) in the sidebar to open the Hand Track panel — the enable checkbox is locked until face tracking is on
 3. Check **"Enable Hand Tracking"**
 
 **Output modes:**
@@ -179,7 +179,8 @@ dTrack uses webcam optical flow to detect repetitive motion like hand waving and
 
 1. Click the **pencil icon** (✏) in the sidebar
 2. Check **"Enable Drawing"** to activate the drawing canvas
-3. Select a tool: **Brush**, **Eraser**, **Line**, **Fill**, or **Text**
+3. Check **"Draw over model"** to render the drawing canvas in front of the Live2D model (default: behind)
+4. Select a tool: **Brush**, **Eraser**, **Line**, **Fill**, or **Text**
 
 **Brush/Eraser features:**
 - **7 presets** — Hard Round, Soft Round, Airbrush, Flat Brush, Pencil, Hard Eraser, Soft Eraser
@@ -187,7 +188,7 @@ dTrack uses webcam optical flow to detect repetitive motion like hand waving and
 - **Custom brush** — saves current settings as a new "Custom" preset in the list
 - Adjustable size, opacity, hardness, flow, spacing
 - **Brush tip** — ratio (aspect) and angle for flat/calligraphic brushes
-- **Stylus pen support** — pressure controls size and/or opacity; tilt controls brush angle
+- **Stylus pen support** — pressure controls size and/or opacity; tilt controls brush angle; high-frequency coalesced pointer events for maximum stroke fidelity
 - **Input Smoothing** slider — reduces pressure/tilt jitter for smoother strokes (0 = raw, 1 = very smooth, default 1)
 - **Undo/Redo** (Ctrl+Z / Ctrl+Shift+Z)
 
